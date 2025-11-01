@@ -1,0 +1,6 @@
+requests
+xmltodict
+pandas
+wordcloud
+matplotlib
+openpyxl
