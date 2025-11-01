@@ -3,6 +3,7 @@ import xmltodict
 from config import HEADERS
 
 def get_cid(bvid):
+    # 获取视频的弹幕 CID 和标题
     url = f"https://api.bilibili.com/x/web-interface/view?bvid={bvid}"
     r = requests.get(url, headers=HEADERS)
     data = r.json()
@@ -11,6 +12,7 @@ def get_cid(bvid):
     raise ValueError(f"视频获取失败: {data.get('message')}")
 
 def fetch_danmaku(bvid):
+    # 获取弹幕 XML 并解析为弹幕列表
     cid, title = get_cid(bvid)
     url = f"https://comment.bilibili.com/{cid}.xml"
     r = requests.get(url, headers=HEADERS)
